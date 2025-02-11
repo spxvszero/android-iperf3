@@ -160,6 +160,8 @@ context.getApplicationInfo().nativeLibraryDir;
 > - so 后缀：部分设备会拷贝，部分不会
 > - libxxx.so：终于都正常拷贝了
 
+注意：如果没有正常拷贝过去的话，可能是没有在 `AndroidManifest.xml` 中的 `application` 增加  `android:extractNativeLibs="true"` 属性了
+
 
 
 # iperf3 问题修改
