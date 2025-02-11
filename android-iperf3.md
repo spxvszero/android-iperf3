@@ -172,7 +172,7 @@ context.getApplicationInfo().nativeLibraryDir;
 
 iperf_api.c 5104行，`int iperf_printf(struct iperf_test *test, const char* format, ...)`：
 
-这是一个线程安全的打印方法，将测试结果以一定的格式（format）输出，由于只用到了客户端模式，所以只修改`test->role == 'c'`的情况， 在`fprintf`和`vfprintf`后手动刷新缓冲区。
+这是一个线程安全的打印方法，将测试结果以一定的格式（format）输出，由于只用到了客户端模式，所以只修改`test->role == 'c'`的情况， 在`fprintf`和`vfprintf`后手动刷新缓冲区，即增加了 `fflush(test->outfile);` 代码。
 
 ```c
 if (test->role == 'c') {
